@@ -1,0 +1,3058 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>North Studio — E-Commerce Concept</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root{
+    --bg:#080b14;
+    --card:#111625;
+    --card2:#151b2c;
+    --text:#f5f7fb;
+    --muted:#9299aa;
+    --line:rgba(255,255,255,.09);
+    --accent:#b8a7ff;
+    --white:#fff;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Inter,Arial,sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 20% 10%,
+            rgba(113,98,255,.14),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 40%,
+            rgba(184,167,255,.08),
+            transparent 25%
+        ),
+        var(--bg);
+
+    color:var(--text);
+
+    overflow-x:hidden;
+}
+
+button,
+input,
+textarea,
+select{
+    font-family:inherit;
+}
+
+button,
+a{
+    cursor:pointer;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar{
+    width:100%;
+
+    position:fixed;
+    top:0;
+    left:0;
+
+    z-index:1000;
+
+    padding:18px 6%;
+
+    transition:.35s;
+}
+
+.navbar.scrolled{
+
+    background:rgba(8,11,20,.82);
+
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid var(--line);
+}
+
+.nav{
+
+    max-width:1250px;
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+}
+
+.logo{
+
+    font-size:21px;
+
+    font-weight:800;
+
+    letter-spacing:-1px;
+}
+
+.logo span{
+    color:var(--accent);
+}
+
+.nav-links{
+
+    display:flex;
+
+    gap:35px;
+
+    list-style:none;
+}
+
+.nav-links a{
+
+    color:#c9ceda;
+
+    font-size:14px;
+
+    transition:.25s;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+.cart-btn{
+
+    border:1px solid var(--line);
+
+    background:#121827;
+
+    color:white;
+
+    border-radius:100px;
+
+    padding:10px 15px;
+
+    display:flex;
+
+    gap:8px;
+
+    align-items:center;
+}
+
+.cart-count{
+
+    min-width:20px;
+
+    height:20px;
+
+    border-radius:50%;
+
+    display:grid;
+
+    place-items:center;
+
+    background:var(--accent);
+
+    color:#10111b;
+
+    font-size:11px;
+
+    font-weight:800;
+}
+
+.menu-btn{
+
+    display:none;
+
+    background:none;
+
+    color:white;
+
+    border:0;
+
+    font-size:25px;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+
+    min-height:100vh;
+
+    padding:145px 6% 70px;
+
+    display:flex;
+
+    align-items:center;
+}
+
+.hero-inner{
+
+    width:100%;
+
+    max-width:1250px;
+
+    margin:auto;
+}
+
+.hero-label{
+
+    color:#bfc5d2;
+
+    letter-spacing:5px;
+
+    font-size:11px;
+
+    margin-bottom:25px;
+}
+
+.hero h1{
+
+    max-width:900px;
+
+    font-size:clamp(58px,10vw,145px);
+
+    line-height:.82;
+
+    letter-spacing:-8px;
+
+    font-weight:900;
+}
+
+.hero h1 span{
+
+    color:transparent;
+
+    -webkit-text-stroke:1px #dce0e8;
+}
+
+.hero-bottom{
+
+    margin-top:55px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:30px;
+}
+
+.hero-text{
+
+    max-width:420px;
+
+    color:var(--muted);
+
+    line-height:1.8;
+
+    font-size:14px;
+}
+
+.shop-btn{
+
+    border:0;
+
+    background:white;
+
+    color:#090b12;
+
+    padding:16px 24px;
+
+    border-radius:100px;
+
+    font-weight:700;
+
+    transition:.3s;
+}
+
+.shop-btn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 15px 35px rgba(255,255,255,.13);
+}
+
+
+/* =====================================================
+   MARQUEE
+===================================================== */
+
+.marquee{
+
+    border-top:1px solid var(--line);
+
+    border-bottom:1px solid var(--line);
+
+    overflow:hidden;
+
+    white-space:nowrap;
+
+    padding:20px 0;
+}
+
+.marquee-track{
+
+    display:inline-block;
+
+    animation:
+        marquee 20s linear infinite;
+}
+
+.marquee span{
+
+    margin:0 30px;
+
+    color:#71798b;
+
+    font-size:12px;
+
+    letter-spacing:4px;
+}
+
+@keyframes marquee{
+
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(-50%);
+    }
+}
+
+
+/* =====================================================
+   PRODUCTS
+===================================================== */
+
+.products{
+
+    padding:120px 6%;
+}
+
+.section-head{
+
+    max-width:1250px;
+
+    margin:auto auto 45px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:end;
+}
+
+.section-label{
+
+    color:var(--accent);
+
+    letter-spacing:3px;
+
+    font-size:11px;
+
+    margin-bottom:12px;
+}
+
+.section-head h2{
+
+    font-size:clamp(35px,5vw,60px);
+
+    letter-spacing:-3px;
+}
+
+.filters{
+
+    display:flex;
+
+    gap:8px;
+}
+
+.filter{
+
+    border:1px solid var(--line);
+
+    background:transparent;
+
+    color:#aeb5c4;
+
+    padding:10px 16px;
+
+    border-radius:100px;
+
+    font-size:12px;
+
+    transition:.25s;
+}
+
+.filter.active,
+.filter:hover{
+
+    background:white;
+
+    color:#090b12;
+}
+
+.product-grid{
+
+    max-width:1250px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:22px;
+}
+
+.product{
+
+    background:var(--card);
+
+    border:1px solid var(--line);
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    transition:.35s;
+}
+
+.product:hover{
+
+    transform:translateY(-8px);
+
+    border-color:
+        rgba(184,167,255,.35);
+}
+
+.product-image{
+
+    height:470px;
+
+    overflow:hidden;
+
+    position:relative;
+
+    background:#ddd;
+}
+
+.product-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.7s;
+}
+
+.product:hover img{
+
+    transform:scale(1.06);
+}
+
+.product-tag{
+
+    position:absolute;
+
+    top:18px;
+
+    left:18px;
+
+    background:
+        rgba(8,11,20,.8);
+
+    backdrop-filter:blur(10px);
+
+    border:1px solid var(--line);
+
+    padding:8px 12px;
+
+    border-radius:100px;
+
+    font-size:10px;
+
+    letter-spacing:1px;
+}
+
+.product-info{
+
+    padding:23px;
+}
+
+.product-info h3{
+
+    font-size:20px;
+
+    margin-bottom:7px;
+}
+
+.product-info p{
+
+    color:var(--muted);
+
+    font-size:12px;
+
+    margin-bottom:18px;
+}
+
+.product-bottom{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+}
+
+.price{
+
+    font-size:17px;
+
+    font-weight:700;
+}
+
+.add-btn{
+
+    background:white;
+
+    border:0;
+
+    padding:11px 17px;
+
+    border-radius:100px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    transition:.25s;
+}
+
+.add-btn:hover{
+
+    transform:translateY(-2px);
+
+    opacity:.9;
+}
+
+
+/* =====================================================
+   FEATURE
+===================================================== */
+
+.feature{
+
+    padding:100px 6%;
+}
+
+.feature-box{
+
+    max-width:1250px;
+
+    min-height:500px;
+
+    margin:auto;
+
+    border-radius:35px;
+
+    overflow:hidden;
+
+    position:relative;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(7,10,18,.95),
+            rgba(7,10,18,.15)
+        ),
+
+        url(
+            "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1800&q=85"
+        )
+
+        center/cover;
+
+    display:flex;
+
+    align-items:center;
+
+    padding:70px;
+}
+
+.feature-content{
+
+    max-width:500px;
+}
+
+.feature-content small{
+
+    letter-spacing:4px;
+
+    color:#c2c6d1;
+}
+
+.feature-content h2{
+
+    font-size:clamp(45px,7vw,85px);
+
+    line-height:.9;
+
+    letter-spacing:-5px;
+
+    margin:20px 0;
+}
+
+.feature-content p{
+
+    color:#bdc2cf;
+
+    line-height:1.8;
+
+    font-size:14px;
+}
+
+
+/* EXPLORE COLLECTION */
+
+.outline-btn{
+
+    display:inline-block;
+
+    margin-top:28px;
+
+    padding:14px 20px;
+
+    border-radius:100px;
+
+    border:1px solid
+        rgba(255,255,255,.3);
+
+    background:
+        rgba(255,255,255,.08);
+
+    color:white;
+
+    transition:.3s;
+
+    font-size:13px;
+}
+
+.outline-btn:hover{
+
+    background:white;
+
+    color:#080b14;
+
+    transform:translateY(-3px);
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+
+    border-top:1px solid var(--line);
+
+    padding:50px 6%;
+}
+
+.footer-inner{
+
+    max-width:1250px;
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    color:#777f91;
+
+    font-size:12px;
+}
+
+
+/* =====================================================
+   CART
+===================================================== */
+
+.cart-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+        rgba(0,0,0,.65);
+
+    backdrop-filter:blur(5px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.3s;
+
+    z-index:1500;
+}
+
+.cart-overlay.open{
+
+    opacity:1;
+
+    visibility:visible;
+}
+
+.cart{
+
+    position:absolute;
+
+    right:0;
+
+    top:0;
+
+    height:100%;
+
+    width:min(430px,92%);
+
+    background:#0e1320;
+
+    border-left:1px solid var(--line);
+
+    padding:25px;
+
+    transform:translateX(100%);
+
+    transition:.4s;
+
+    display:flex;
+
+    flex-direction:column;
+}
+
+.cart-overlay.open .cart{
+
+    transform:translateX(0);
+}
+
+.cart-head{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding-bottom:20px;
+
+    border-bottom:
+        1px solid var(--line);
+}
+
+.close-cart{
+
+    border:0;
+
+    background:none;
+
+    color:white;
+
+    font-size:25px;
+}
+
+.cart-items{
+
+    flex:1;
+
+    overflow:auto;
+
+    padding:20px 0;
+}
+
+.empty{
+
+    color:#777f91;
+
+    text-align:center;
+
+    margin-top:50px;
+}
+
+.cart-item{
+
+    display:flex;
+
+    gap:12px;
+
+    padding:14px 0;
+
+    border-bottom:
+        1px solid var(--line);
+}
+
+.cart-item img{
+
+    width:70px;
+
+    height:75px;
+
+    object-fit:cover;
+
+    border-radius:13px;
+}
+
+.cart-item-info{
+
+    flex:1;
+}
+
+.cart-item-info h4{
+
+    font-size:13px;
+
+    margin-bottom:6px;
+}
+
+.cart-item-info > span{
+
+    color:#9299aa;
+
+    font-size:11px;
+}
+
+.quantity{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-top:10px;
+}
+
+.quantity button{
+
+    width:25px;
+
+    height:25px;
+
+    border-radius:50%;
+
+    border:1px solid var(--line);
+
+    background:#161d2c;
+
+    color:white;
+}
+
+.remove{
+
+    border:0 !important;
+
+    background:none !important;
+
+    color:#777f91 !important;
+
+    font-size:11px;
+
+    width:auto !important;
+}
+
+.cart-footer{
+
+    border-top:
+        1px solid var(--line);
+
+    padding-top:20px;
+}
+
+.total{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:18px;
+}
+
+.checkout{
+
+    width:100%;
+
+    padding:16px;
+
+    border:0;
+
+    border-radius:100px;
+
+    background:white;
+
+    color:#080b14;
+
+    font-weight:800;
+
+    transition:.3s;
+}
+
+.checkout:hover{
+
+    transform:translateY(-3px);
+}
+
+
+/* =====================================================
+   CHECKOUT
+===================================================== */
+
+.checkout-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:2000;
+
+    background:
+        rgba(0,0,0,.78);
+
+    backdrop-filter:blur(10px);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.3s;
+}
+
+.checkout-overlay.open{
+
+    opacity:1;
+
+    visibility:visible;
+}
+
+.checkout-box{
+
+    width:min(520px,100%);
+
+    max-height:90vh;
+
+    overflow:auto;
+
+    background:#0e1320;
+
+    border:1px solid var(--line);
+
+    border-radius:28px;
+
+    padding:30px;
+
+    position:relative;
+
+    transform:
+        translateY(30px)
+        scale(.97);
+
+    transition:.3s;
+}
+
+.checkout-overlay.open
+.checkout-box{
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+.checkout-close{
+
+    position:absolute;
+
+    top:18px;
+
+    right:20px;
+
+    border:0;
+
+    background:none;
+
+    color:white;
+
+    font-size:28px;
+}
+
+.checkout-header span{
+
+    color:var(--accent);
+
+    font-size:10px;
+
+    letter-spacing:3px;
+}
+
+.checkout-header h2{
+
+    font-size:32px;
+
+    letter-spacing:-2px;
+
+    margin-top:10px;
+
+    margin-bottom:25px;
+}
+
+.checkout-product{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:12px 0;
+
+    border-bottom:
+        1px solid var(--line);
+}
+
+.checkout-product img{
+
+    width:55px;
+
+    height:60px;
+
+    object-fit:cover;
+
+    border-radius:10px;
+}
+
+.checkout-product-info{
+
+    flex:1;
+}
+
+.checkout-product-info h4{
+
+    font-size:13px;
+
+    margin-bottom:5px;
+}
+
+.checkout-product-info span{
+
+    color:var(--muted);
+
+    font-size:11px;
+}
+
+.checkout-total{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    padding:20px 0;
+
+    font-size:16px;
+}
+
+.checkout-total strong{
+
+    font-size:20px;
+}
+
+#checkoutForm{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+}
+
+#checkoutForm input,
+#checkoutForm textarea,
+#checkoutForm select{
+
+    width:100%;
+
+    border:1px solid var(--line);
+
+    background:#151b2a;
+
+    color:white;
+
+    border-radius:14px;
+
+    padding:15px;
+
+    outline:none;
+
+    font-size:13px;
+}
+
+#checkoutForm input:focus,
+#checkoutForm textarea:focus,
+#checkoutForm select:focus{
+
+    border-color:var(--accent);
+}
+
+#checkoutForm textarea{
+
+    min-height:100px;
+
+    resize:vertical;
+}
+
+#checkoutForm option{
+
+    background:#151b2a;
+}
+
+.place-order{
+
+    border:0;
+
+    background:white;
+
+    color:#080b14;
+
+    padding:16px;
+
+    border-radius:100px;
+
+    font-weight:800;
+
+    margin-top:5px;
+
+    transition:.3s;
+}
+
+.place-order:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 12px 30px
+        rgba(255,255,255,.12);
+}
+
+.checkout-note{
+
+    text-align:center;
+
+    color:#666f82;
+
+    font-size:10px;
+
+    margin-top:15px;
+}
+
+
+/* =====================================================
+   SUCCESS
+===================================================== */
+
+.success-box{
+
+    text-align:center;
+
+    padding:30px 10px;
+}
+
+.success-icon{
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:50%;
+
+    display:grid;
+
+    place-items:center;
+
+    background:rgba(184,167,255,.15);
+
+    color:var(--accent);
+
+    font-size:30px;
+
+    margin:0 auto 20px;
+}
+
+.success-box h2{
+
+    font-size:30px;
+
+    margin-bottom:10px;
+}
+
+.success-box p{
+
+    color:var(--muted);
+
+    line-height:1.7;
+
+    font-size:13px;
+}
+
+.success-btn{
+
+    margin-top:25px;
+
+    border:0;
+
+    background:white;
+
+    color:#080b14;
+
+    padding:14px 25px;
+
+    border-radius:100px;
+
+    font-weight:800;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:750px){
+
+    .navbar{
+        padding:15px 5%;
+    }
+
+    .nav-links{
+
+        position:absolute;
+
+        top:70px;
+
+        left:5%;
+
+        right:5%;
+
+        padding:20px;
+
+        border:1px solid var(--line);
+
+        background:
+            rgba(14,19,32,.97);
+
+        backdrop-filter:blur(20px);
+
+        border-radius:20px;
+
+        display:none;
+
+        flex-direction:column;
+
+        gap:18px;
+    }
+
+    .nav-links.open{
+        display:flex;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .cart-btn{
+
+        margin-left:auto;
+
+        margin-right:10px;
+    }
+
+    .hero{
+
+        padding:130px 5% 70px;
+
+        min-height:auto;
+    }
+
+    .hero h1{
+
+        font-size:62px;
+
+        letter-spacing:-4px;
+    }
+
+    .hero-bottom{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+    }
+
+    .section-head{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:25px;
+    }
+
+    .product-grid{
+
+        grid-template-columns:1fr;
+    }
+
+    .product-image{
+
+        height:420px;
+    }
+
+    .feature-box{
+
+        min-height:580px;
+
+        padding:35px;
+
+        align-items:end;
+    }
+
+    .feature-content h2{
+
+        letter-spacing:-3px;
+    }
+
+    .footer-inner{
+
+        flex-direction:column;
+
+        gap:12px;
+    }
+
+    .checkout-box{
+
+        padding:25px;
+
+        border-radius:22px;
+    }
+
+}
+
+
+/* =====================================================
+   REVEAL ANIMATION
+===================================================== */
+
+.reveal{
+
+    opacity:0;
+
+    transform:translateY(35px);
+
+    transition:.8s;
+}
+
+.reveal.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header class="navbar" id="navbar">
+
+<nav class="nav">
+
+
+<a href="#home" class="logo">
+    NORTH<span>.</span>
+</a>
+
+
+<ul class="nav-links" id="navLinks">
+
+    <li>
+        <a href="#home">
+            Home
+        </a>
+    </li>
+
+    <li>
+        <a href="#shop">
+            Shop
+        </a>
+    </li>
+
+    <li>
+        <a href="#collection">
+            Collection
+        </a>
+    </li>
+
+    <li>
+        <a href="#about">
+            About
+        </a>
+    </li>
+
+</ul>
+
+
+<button
+    class="cart-btn"
+    onclick="openCart()">
+
+    Bag
+
+    <span
+        class="cart-count"
+        id="cartCount">
+
+        0
+
+    </span>
+
+</button>
+
+
+<button
+    class="menu-btn"
+    onclick="toggleMenu()">
+
+    ☰
+
+</button>
+
+
+</nav>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section
+    class="hero"
+    id="home">
+
+<div class="hero-inner">
+
+
+<div class="hero-label">
+
+    NEW COLLECTION — 2026
+
+</div>
+
+
+<h1>
+
+    SIMPLE.<br>
+
+    <span>BOLD.</span><br>
+
+    YOURS.
+
+</h1>
+
+
+<div class="hero-bottom">
+
+
+<p class="hero-text">
+
+    Contemporary essentials designed for people
+    who appreciate clean lines, quality materials
+    and effortless style.
+
+</p>
+
+
+<a
+    href="#shop"
+    class="shop-btn">
+
+    Shop collection →
+
+</a>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MARQUEE
+===================================================== -->
+
+<div class="marquee">
+
+<div class="marquee-track">
+
+    <span>
+        NORTH STUDIO
+    </span>
+
+    <span>
+        DESIGNED FOR EVERYDAY
+    </span>
+
+    <span>
+        NEW SEASON
+    </span>
+
+    <span>
+        QUALITY FIRST
+    </span>
+
+
+    <span>
+        NORTH STUDIO
+    </span>
+
+    <span>
+        DESIGNED FOR EVERYDAY
+    </span>
+
+    <span>
+        NEW SEASON
+    </span>
+
+    <span>
+        QUALITY FIRST
+    </span>
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     PRODUCTS
+===================================================== -->
+
+<section
+    class="products"
+    id="shop">
+
+
+<div class="section-head reveal">
+
+
+<div>
+
+    <div class="section-label">
+        SHOP
+    </div>
+
+    <h2>
+        Selected pieces.
+    </h2>
+
+</div>
+
+
+<div class="filters">
+
+
+<button
+    class="filter active"
+    onclick="filterProducts('all',this)">
+
+    All
+
+</button>
+
+
+<button
+    class="filter"
+    onclick="filterProducts('clothing',this)">
+
+    Clothing
+
+</button>
+
+
+<button
+    class="filter"
+    onclick="filterProducts('accessories',this)">
+
+    Accessories
+
+</button>
+
+
+</div>
+
+</div>
+
+
+
+<div
+    class="product-grid"
+    id="productGrid">
+
+
+<!-- PRODUCT 1 -->
+
+<article
+    class="product reveal"
+    data-category="clothing">
+
+
+<div class="product-image">
+
+<img
+src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1000&q=85"
+alt="Essential Tee">
+
+
+<div class="product-tag">
+
+    BESTSELLER
+
+</div>
+
+</div>
+
+
+<div class="product-info">
+
+
+<h3>
+    Essential Tee
+</h3>
+
+
+<p>
+    Heavyweight cotton / Black
+</p>
+
+
+<div class="product-bottom">
+
+
+<div class="price">
+    $48
+</div>
+
+
+<button
+class="add-btn"
+onclick="addToCart(
+'Essential Tee',
+48,
+'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=500&q=80'
+)">
+
+    Add to bag
+
+</button>
+
+
+</div>
+
+</div>
+
+</article>
+
+
+
+<!-- PRODUCT 2 -->
+
+<article
+    class="product reveal"
+    data-category="clothing">
+
+
+<div class="product-image">
+
+<img
+src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1000&q=85"
+alt="North Jacket">
+
+
+<div class="product-tag">
+    NEW
+</div>
+
+</div>
+
+
+<div class="product-info">
+
+
+<h3>
+    North Jacket
+</h3>
+
+
+<p>
+    Relaxed fit / Sand
+</p>
+
+
+<div class="product-bottom">
+
+
+<div class="price">
+    $120
+</div>
+
+
+<button
+class="add-btn"
+onclick="addToCart(
+'North Jacket',
+120,
+'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=500&q=80'
+)">
+
+    Add to bag
+
+</button>
+
+
+</div>
+
+</div>
+
+</article>
+
+
+
+<!-- PRODUCT 3 -->
+
+<article
+    class="product reveal"
+    data-category="accessories">
+
+
+<div class="product-image">
+
+<img
+src="https://images.unsplash.com/photo-1523779917675-b6ed3a42a561?auto=format&fit=crop&w=1000&q=85"
+alt="Minimal Watch">
+
+</div>
+
+
+<div class="product-info">
+
+
+<h3>
+    Minimal Watch
+</h3>
+
+
+<p>
+    Stainless steel / Silver
+</p>
+
+
+<div class="product-bottom">
+
+
+<div class="price">
+    $95
+</div>
+
+
+<button
+class="add-btn"
+onclick="addToCart(
+'Minimal Watch',
+95,
+'https://images.unsplash.com/photo-1523779917675-b6ed3a42a561?auto=format&fit=crop&w=500&q=80'
+)">
+
+    Add to bag
+
+</button>
+
+
+</div>
+
+</div>
+
+</article>
+
+
+
+<!-- PRODUCT 4 -->
+
+<article
+    class="product reveal"
+    data-category="accessories">
+
+
+<div class="product-image">
+
+<img
+src="https://images.unsplash.com/photo-1523381294911-8d3cead13475?auto=format&fit=crop&w=1000&q=85"
+alt="Daily Carry">
+
+</div>
+
+
+<div class="product-info">
+
+
+<h3>
+    Daily Carry
+</h3>
+
+
+<p>
+    Everyday essentials
+</p>
+
+
+<div class="product-bottom">
+
+
+<div class="price">
+    $65
+</div>
+
+
+<button
+class="add-btn"
+onclick="addToCart(
+'Daily Carry',
+65,
+'https://images.unsplash.com/photo-1523381294911-8d3cead13475?auto=format&fit=crop&w=500&q=80'
+)">
+
+    Add to bag
+
+</button>
+
+
+</div>
+
+</div>
+
+</article>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FEATURE
+===================================================== -->
+
+<section
+    class="feature"
+    id="collection">
+
+
+<div class="feature-box reveal">
+
+
+<div class="feature-content">
+
+
+<small>
+    AUTUMN / WINTER 2026
+</small>
+
+
+<h2>
+
+    Made<br>
+    to last.
+
+</h2>
+
+
+<p>
+
+    A collection built around timeless silhouettes,
+    durable materials and details that get better
+    with time.
+
+</p>
+
+
+<a
+    href="#shop"
+    class="outline-btn">
+
+    Explore collection →
+
+</a>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer id="about">
+
+<div class="footer-inner">
+
+<strong>
+    NORTH STUDIO © 2026
+</strong>
+
+<span>
+    E-Commerce Concept — Designed by Doma Coding
+</span>
+
+</div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     CART
+===================================================== -->
+
+<div
+    class="cart-overlay"
+    id="cartOverlay"
+    onclick="closeCart(event)">
+
+
+<aside class="cart">
+
+
+<div class="cart-head">
+
+
+<h2>
+    Your Bag
+</h2>
+
+
+<button
+    class="close-cart"
+    onclick="closeCart()">
+
+    ×
+
+</button>
+
+
+</div>
+
+
+
+<div
+    class="cart-items"
+    id="cartItems">
+
+
+<div class="empty">
+
+    Your bag is empty.
+
+</div>
+
+
+</div>
+
+
+
+<div class="cart-footer">
+
+
+<div class="total">
+
+<span>
+    Total
+</span>
+
+<strong id="cartTotal">
+    $0
+</strong>
+
+</div>
+
+
+<button
+    class="checkout"
+    onclick="checkout()">
+
+    Checkout
+
+</button>
+
+
+</div>
+
+
+</aside>
+
+</div>
+
+
+
+<!-- =====================================================
+     CHECKOUT
+===================================================== -->
+
+<div
+    class="checkout-overlay"
+    id="checkoutOverlay">
+
+
+<div class="checkout-box">
+
+
+<button
+    class="checkout-close"
+    onclick="closeCheckout()">
+
+    ×
+
+</button>
+
+
+<div
+    class="checkout-header"
+    id="checkoutHeader">
+
+
+<span>
+    CHECKOUT
+</span>
+
+
+<h2>
+    Complete your order.
+</h2>
+
+
+</div>
+
+
+<div
+    id="checkoutProducts">
+
+</div>
+
+
+<div
+    class="checkout-total">
+
+
+<span>
+    Total
+</span>
+
+
+<strong
+    id="checkoutTotal">
+
+    $0
+
+</strong>
+
+
+</div>
+
+
+<form
+    id="checkoutForm">
+
+
+<input
+    type="text"
+    id="customerName"
+    placeholder="Full name"
+    required>
+
+
+<input
+    type="tel"
+    id="customerPhone"
+    placeholder="Phone number"
+    required>
+
+
+<textarea
+    id="customerAddress"
+    placeholder="Delivery address"
+    required></textarea>
+
+
+<select
+    id="paymentMethod">
+
+
+<option value="cash">
+
+    Cash on Delivery
+
+</option>
+
+
+<option value="card">
+
+    Card Payment
+
+</option>
+
+
+</select>
+
+
+<button
+    type="submit"
+    class="place-order">
+
+    Place Order →
+
+</button>
+
+
+</form>
+
+
+<p class="checkout-note">
+
+    Secure checkout • Demo store
+
+</p>
+
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+window.addEventListener(
+    "scroll",
+    function(){
+
+        document
+            .getElementById("navbar")
+            .classList.toggle(
+                "scrolled",
+                window.scrollY > 40
+            );
+
+    }
+);
+
+
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+function toggleMenu(){
+
+    document
+        .getElementById("navLinks")
+        .classList.toggle("open");
+
+}
+
+
+/* Close mobile menu after clicking a link */
+
+document
+    .querySelectorAll(".nav-links a")
+    .forEach(function(link){
+
+        link.addEventListener(
+            "click",
+            function(){
+
+                document
+                    .getElementById("navLinks")
+                    .classList.remove("open");
+
+            }
+        );
+
+    });
+
+
+
+/* =====================================================
+   CART DATA
+===================================================== */
+
+let cart = [];
+
+
+
+/* =====================================================
+   ADD TO CART
+===================================================== */
+
+function addToCart(
+    name,
+    price,
+    image
+){
+
+    const existing =
+        cart.find(
+            function(item){
+
+                return item.name === name;
+
+            }
+        );
+
+
+    if(existing){
+
+        existing.quantity++;
+
+    }
+
+    else{
+
+        cart.push({
+
+            name:name,
+
+            price:price,
+
+            image:image,
+
+            quantity:1
+
+        });
+
+    }
+
+
+    updateCart();
+
+    openCart();
+
+}
+
+
+
+/* =====================================================
+   UPDATE CART
+===================================================== */
+
+function updateCart(){
+
+    const container =
+        document.getElementById(
+            "cartItems"
+        );
+
+
+    const count =
+        document.getElementById(
+            "cartCount"
+        );
+
+
+    const total =
+        document.getElementById(
+            "cartTotal"
+        );
+
+
+    const totalQuantity =
+        cart.reduce(
+            function(sum,item){
+
+                return sum + item.quantity;
+
+            },
+            0
+        );
+
+
+    count.textContent =
+        totalQuantity;
+
+
+    if(cart.length === 0){
+
+        container.innerHTML = `
+
+            <div class="empty">
+
+                Your bag is empty.
+
+            </div>
+
+        `;
+
+
+        total.textContent =
+            "$0";
+
+        return;
+
+    }
+
+
+    container.innerHTML = "";
+
+    let totalPrice = 0;
+
+
+    cart.forEach(
+        function(item,index){
+
+            totalPrice +=
+                item.price *
+                item.quantity;
+
+
+            container.innerHTML += `
+
+                <div class="cart-item">
+
+                    <img
+                        src="${item.image}"
+                        alt="${item.name}">
+
+
+                    <div class="cart-item-info">
+
+                        <h4>
+                            ${item.name}
+                        </h4>
+
+
+                        <span>
+                            $${item.price}
+                        </span>
+
+
+                        <div class="quantity">
+
+
+                            <button
+                                onclick="
+                                changeQuantity(
+                                    ${index},
+                                    -1
+                                )">
+
+                                −
+
+                            </button>
+
+
+                            <span>
+                                ${item.quantity}
+                            </span>
+
+
+                            <button
+                                onclick="
+                                changeQuantity(
+                                    ${index},
+                                    1
+                                )">
+
+                                +
+
+                            </button>
+
+
+                            <button
+                                class="remove"
+                                onclick="
+                                removeItem(
+                                    ${index}
+                                )">
+
+                                Remove
+
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+            `;
+
+        }
+    );
+
+
+    total.textContent =
+        "$" +
+        totalPrice.toFixed(2);
+
+}
+
+
+
+/* =====================================================
+   CHANGE QUANTITY
+===================================================== */
+
+function changeQuantity(
+    index,
+    change
+){
+
+    if(!cart[index]){
+        return;
+    }
+
+
+    cart[index].quantity +=
+        change;
+
+
+    if(
+        cart[index].quantity <= 0
+    ){
+
+        cart.splice(
+            index,
+            1
+        );
+
+    }
+
+
+    updateCart();
+
+}
+
+
+
+/* =====================================================
+   REMOVE ITEM
+===================================================== */
+
+function removeItem(index){
+
+    cart.splice(
+        index,
+        1
+    );
+
+    updateCart();
+
+}
+
+
+
+/* =====================================================
+   OPEN CART
+===================================================== */
+
+function openCart(){
+
+    document
+        .getElementById(
+            "cartOverlay"
+        )
+        .classList.add("open");
+
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+
+/* =====================================================
+   CLOSE CART
+===================================================== */
+
+function closeCart(event){
+
+    if(
+        event &&
+        event.target !==
+        document.getElementById(
+            "cartOverlay"
+        )
+    ){
+
+        return;
+
+    }
+
+
+    document
+        .getElementById(
+            "cartOverlay"
+        )
+        .classList.remove("open");
+
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+
+/* =====================================================
+   FILTER PRODUCTS
+===================================================== */
+
+function filterProducts(
+    category,
+    button
+){
+
+    document
+        .querySelectorAll(".filter")
+        .forEach(
+            function(btn){
+
+                btn.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+    button.classList.add(
+        "active"
+    );
+
+
+    document
+        .querySelectorAll(".product")
+        .forEach(
+            function(product){
+
+                const productCategory =
+                    product.dataset.category;
+
+
+                if(
+                    category === "all" ||
+                    productCategory === category
+                ){
+
+                    product.style.display =
+                        "block";
+
+
+                    setTimeout(
+                        function(){
+
+                            product.style.opacity =
+                                "1";
+
+                        },
+                        20
+                    );
+
+                }
+
+                else{
+
+                    product.style.opacity =
+                        "0";
+
+
+                    setTimeout(
+                        function(){
+
+                            product.style.display =
+                                "none";
+
+                        },
+                        250
+                    );
+
+                }
+
+            }
+        );
+
+}
+
+
+
+/* =====================================================
+   CHECKOUT
+===================================================== */
+
+function checkout(){
+
+    if(cart.length === 0){
+
+        alert(
+            "Your bag is empty."
+        );
+
+        return;
+
+    }
+
+
+    const products =
+        document.getElementById(
+            "checkoutProducts"
+        );
+
+
+    let total = 0;
+
+
+    products.innerHTML =
+        "";
+
+
+    cart.forEach(
+        function(item){
+
+            total +=
+                item.price *
+                item.quantity;
+
+
+            products.innerHTML += `
+
+                <div class="checkout-product">
+
+
+                    <img
+                        src="${item.image}"
+                        alt="${item.name}">
+
+
+                    <div
+                        class="checkout-product-info">
+
+
+                        <h4>
+                            ${item.name}
+                        </h4>
+
+
+                        <span>
+
+                            ${item.quantity}
+                            ×
+                            $${item.price}
+
+                        </span>
+
+
+                    </div>
+
+
+                    <strong>
+
+                        $${(
+                            item.price *
+                            item.quantity
+                        )}
+
+                    </strong>
+
+
+                </div>
+
+            `;
+
+        }
+    );
+
+
+    document
+        .getElementById(
+            "checkoutTotal"
+        )
+        .textContent =
+        "$" +
+        total.toFixed(2);
+
+
+    document
+        .getElementById(
+            "checkoutOverlay"
+        )
+        .classList.add("open");
+
+}
+
+
+
+/* =====================================================
+   CLOSE CHECKOUT
+===================================================== */
+
+function closeCheckout(){
+
+    document
+        .getElementById(
+            "checkoutOverlay"
+        )
+        .classList.remove("open");
+
+}
+
+
+
+/* =====================================================
+   PLACE ORDER
+===================================================== */
+
+document
+    .getElementById(
+        "checkoutForm"
+    )
+    .addEventListener(
+        "submit",
+        function(event){
+
+            event.preventDefault();
+
+
+            const name =
+                document.getElementById(
+                    "customerName"
+                ).value.trim();
+
+
+            const phone =
+                document.getElementById(
+                    "customerPhone"
+                ).value.trim();
+
+
+            const address =
+                document.getElementById(
+                    "customerAddress"
+                ).value.trim();
+
+
+            const payment =
+                document.getElementById(
+                    "paymentMethod"
+                ).value;
+
+
+            if(
+                !name ||
+                !phone ||
+                !address
+            ){
+
+                alert(
+                    "Please complete all required fields."
+                );
+
+                return;
+
+            }
+
+
+            /*
+               Card payment is intentionally
+               demo-only.
+            */
+
+            if(payment === "card"){
+
+                alert(
+
+                    "Card payment is not connected yet.\n\n" +
+
+                    "A real store needs a payment gateway " +
+
+                    "and secure backend."
+
+                );
+
+                return;
+
+            }
+
+
+            showSuccess(
+                name,
+                phone
+            );
+
+        }
+    );
+
+
+
+/* =====================================================
+   SUCCESS MESSAGE
+===================================================== */
+
+function showSuccess(
+    name,
+    phone
+){
+
+    const checkoutBox =
+        document.querySelector(
+            ".checkout-box"
+        );
+
+
+    checkoutBox.innerHTML = `
+
+        <div class="success-box">
+
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+
+            <h2>
+                Order placed!
+            </h2>
+
+
+            <p>
+
+                Thank you,
+                <strong>
+                    ${name}
+                </strong>.
+
+                <br><br>
+
+                Your demo order has been
+                received successfully.
+
+                <br><br>
+
+                Phone:
+                ${phone}
+
+            </p>
+
+
+            <button
+                class="success-btn"
+                onclick="finishOrder()">
+
+                Continue Shopping
+
+            </button>
+
+
+        </div>
+
+    `;
+
+}
+
+
+
+/* =====================================================
+   FINISH ORDER
+===================================================== */
+
+function finishOrder(){
+
+    cart = [];
+
+    updateCart();
+
+
+    document
+        .getElementById(
+            "checkoutOverlay"
+        )
+        .classList.remove("open");
+
+
+    document.body.style.overflow =
+        "";
+
+
+    location.reload();
+
+}
+
+
+
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
+
+const observer =
+    new IntersectionObserver(
+        function(entries){
+
+            entries.forEach(
+                function(entry){
+
+                    if(
+                        entry.isIntersecting
+                    ){
+
+                        entry.target
+                            .classList
+                            .add("show");
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold:.12
+        }
+    );
+
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(
+        function(element){
+
+            observer.observe(
+                element
+            );
+
+        }
+    );
+
+
+
+/* =====================================================
+   ESC KEY
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Escape"){
+
+            closeCheckout();
+
+            document
+                .getElementById(
+                    "cartOverlay"
+                )
+                .classList.remove(
+                    "open"
+                );
+
+            document.body.style.overflow =
+                "";
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+
+</html>
